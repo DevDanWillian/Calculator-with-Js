@@ -7,7 +7,16 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
    <link rel="stylesheet" href="/style/sandstone_theme.css">
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-   <script src="script.js"></script>
+   
+   <style>
+      @layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+   </style>
 
    <title>Calculator</title>
 </head>
@@ -20,40 +29,42 @@
    </header>
 
 
+   <div class="col-md-9 col-lg-8 col-xl-7 col-xxl-6 container border rounded-4 bg-dark bg-opacity-50">
+      <input id="hist" class="border border-warning rounded-4 border-5 mt-3 mb-2 text-bg-info p-1 m-auto text-end fs-6 d-flex justify-content-around bg-opacity-100"></input>
+      <input id="tela" class="border border-warning rounded-4 border-5 mt-3 mb-2 text-bg-success pt-2 pb-2 m-auto text-end fs-1 d-flex justify-content-around bg-opacity-100" type="text" pattern="^[0-9+\-*/().\s]+$" step="0.001" list="hide">
 
-   <div class="col-5 container border rounded-4 bg-dark">
-      <div id="screen" class="col border border-warning rounded-4 border-5 mt-2 mb-2 text-bg-success pt-2 pb-2 p-5 m-auto text-end fs-1 m-1">&nbsp</div>
-
-      <div id="buttonsMath" class="pb-5 container col container">
-         <div class="d-flex flex-wrap justify-content-center p-1" id="rowBtn1">
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtnParentesis">( )</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtnPorcentagem">%</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtnC">C</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtnDiv">/</div>
+      <div id="buttonsMath" class="p-3">
+         <div class="d-flex justify-content-center p-1" id="rowBtn1">
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnParentesis" data-action='parentesis'>( )</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnPorcentagem" data-action="porcentagem">%</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnC">C</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="apaga"><-</div>
+            
          </div>
-         <div class="d-flex flex-wrap justify-content-center p-1" id="rowBtn2">
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 "id="calcBtn7">7</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 "id="calcBtn8">8</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 "id="calcBtn9">9</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtnMult">x</div>
+         <div class="d-flex justify-content-center p-1" id="rowBtn2">
+            <button class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">7</button>
+            <button class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">8</button>
+            <button class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">9</button>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnMult">x</div>
          </div>
-         <div class="d-flex flex-wrap justify-content-center p-1" id="rowBtn3">
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 "id="calcBtn4">4</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 "id="calcBtn5">5</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 "id="calcBtn6">6</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtnMenos">-</div>
+         <div class="d-flex justify-content-center p-1" id="rowBtn3">
+            <button class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">4</button>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">5</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">6</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnMenos">-</div>
          </div>
-         <div class="d-flex flex-wrap justify-content-center p-1" id="rowBtn4">
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtn1">1</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtn2">2</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtn3">3</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtnMais">+</div>
+         <div class="d-flex justify-content-center p-1" id="rowBtn4">
+            <div onclick="escreverNum()" class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">1</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">2</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">3</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnMais">+</div>
          </div>
-         <div class="d-flex flex-wrap justify-content-center p-1" id="rowBtn5">
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtn.">.</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtn2">0</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtnMm">±</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1" id="calcBtnIgual">=</div>
+         <div class="d-flex justify-content-center p-1" id="rowBtn5">
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtn.">.</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">0</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnIgual">=</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnDiv">/</div>
+            
          </div>
       </div>
    </div>
@@ -61,3 +72,4 @@
 </div>
 </body>
 </html>
+<script src="script.js"></script>
