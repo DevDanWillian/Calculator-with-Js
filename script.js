@@ -1,4 +1,10 @@
+
+
 const historico = document.getElementById('hist');
+
+let num1 = null;
+let num2 = null;
+let res = null;
 
 const igual = document.getElementById("calcBtnIgual")
 const apaga = document.getElementById("apaga")
@@ -9,11 +15,13 @@ const dividir = document.getElementById("calcBtnDiv")
 const vezes = document.getElementById("calcBtnMult")
 
 
-const screen = document.getElementById("tela")
+let screen = document.getElementById("tela")
 
 const calcBtnNum = document.querySelectorAll(".calcBtnNum")
 
-
+function preventKeyboardInput(event) {
+  event.preventDefault();
+}
 //--
 calcBtnNum.forEach(function(btn) {
    btn.addEventListener("click", function() {
@@ -25,7 +33,6 @@ calcBtnNum.forEach(function(btn) {
    });
 });
 //--
-
 
 igual.addEventListener("click", function() {
    screen.value = screen;
@@ -44,10 +51,22 @@ c.addEventListener("click", function() {
 })
 
 mais.addEventListener("click", function() {
-   const currentValue = screen.value;
-   historico.value += currentValue + ' +';
-   historico.replace(/[^0-9]/g, '') + currentValue;
- });
+//when the + button is clicked, the value of the input field is stored in the num1 variable
+num1 = parseFloat(screen.value);
+
+//when the + is clicked the screen value will be stored in historico
+historico.value += num1 + " +";
+screen.value = "";
+
+//when the + button is clicked, the value of the input field plus is stored in the num2 variable
+mais.addEventListener("click", function() {
+num2 = parseFloat(screen.value);
+res = num1 + num2;
+screen.value = res;
+historico.value += num2 + " = " + res;
+});
+});
+
  
  menos.addEventListener('click', function() {
    const currentValue = screen.value;

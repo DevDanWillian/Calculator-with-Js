@@ -30,15 +30,21 @@
 
 
    <div class="col-md-9 col-lg-8 col-xl-7 col-xxl-6 container border rounded-4 bg-dark bg-opacity-50">
-      <input id="hist" class="border border-warning rounded-4 border-5 mt-3 mb-2 text-bg-info p-1 m-auto text-end fs-6 d-flex justify-content-around bg-opacity-100"></input>
-      <input id="tela" class="border border-warning rounded-4 border-5 mt-3 mb-2 text-bg-success pt-2 pb-2 m-auto text-end fs-1 d-flex justify-content-around bg-opacity-100" type="text" pattern="^[0-9+\-*/().\s]+$" step="0.001" list="hide">
+      <input id="hist" class="border border-warning rounded-4 border-5 mt-3 mb-2 text-bg-info p-1 m-auto text-end fs-6 d-flex justify-content-around bg-opacity-50" onkeydown="preventKeyboardInput(event)">
 
-      <div id="buttonsMath" class="p-3">
+      <input id="tel" class="border border-warning rounded-4 border-5 mt-3 mb-2 text-bg-success pt-2 pb-2 m-auto text-end fs-1 d-flex justify-content-around bg-opacity-100" type="text" pattern="[0-9()+\-*/.%]*" step="0.1" list="hide" onkeydown="preventKeyboardInput(event)">
+
+      <input id="tela" class="border border-warning rounded-4 border-5 mt-3 mb-2 text-bg-success pt-2 pb-2 m-auto text-end fs-1 d-flex justify-content-around bg-opacity-100" type="number" pattern="[0-9()+\\-*/.%]*" minlength="1" step="0.1" list="hide" onkeydown="preventKeyboardInput(event)">
+
+
+
+
+      <div id="buttonsMath" class="">
          <div class="d-flex justify-content-center p-1" id="rowBtn1">
             <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnParentesis" data-action='parentesis'>( )</div>
             <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnPorcentagem" data-action="porcentagem">%</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnC">C</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="apaga"><-</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnC">CE</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="apaga">C</div>
             
          </div>
          <div class="d-flex justify-content-center p-1" id="rowBtn2">
@@ -54,7 +60,7 @@
             <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnMenos">-</div>
          </div>
          <div class="d-flex justify-content-center p-1" id="rowBtn4">
-            <div onclick="escreverNum()" class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">1</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">1</div>
             <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">2</div>
             <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">3</div>
             <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnMais">+</div>
