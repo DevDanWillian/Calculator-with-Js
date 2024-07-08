@@ -1,10 +1,9 @@
-
-
 const historico = document.getElementById('hist');
 
 let num1 = null;
 let num2 = null;
-let res = null;
+
+const resultado = document.getElementById('res');
 
 const igual = document.getElementById("calcBtnIgual")
 const apaga = document.getElementById("apaga")
@@ -13,7 +12,6 @@ const mais = document.getElementById("calcBtnMais")
 const menos = document.getElementById("calcBtnMenos")
 const dividir = document.getElementById("calcBtnDiv")
 const vezes = document.getElementById("calcBtnMult")
-
 
 let screen = document.getElementById("tela")
 
@@ -34,13 +32,6 @@ calcBtnNum.forEach(function(btn) {
 });
 //--
 
-igual.addEventListener("click", function() {
-   screen.value = screen;
-   //if (screen.value === "undefined"){
-     // screen.value = ""
-   //}
-});
-
 apaga.addEventListener("click", function() {
    screen.value = screen.value.substring(0, screen.value.length - 1);
 });
@@ -48,40 +39,22 @@ apaga.addEventListener("click", function() {
 c.addEventListener("click", function() {
    screen.value=null;
    historico.value=null;
+   resultado.value=null;
+})
+
+// Adicione um ouvinte de evento de clique ao botão "igual"
+igual.addEventListener('click', function() {
+
 })
 
 mais.addEventListener("click", function() {
-//when the + button is clicked, the value of the input field is stored in the num1 variable
-num1 = parseFloat(screen.value);
-
-//when the + is clicked the screen value will be stored in historico
-historico.value += num1 + " +";
-screen.value = "";
-
-//when the + button is clicked, the value of the input field plus is stored in the num2 variable
-mais.addEventListener("click", function() {
-num2 = parseFloat(screen.value);
-res = num1 + num2;
-screen.value = res;
-historico.value += num2 + " = " + res;
-});
-});
-
- 
- menos.addEventListener('click', function() {
-   const currentValue = screen.value;
-   historico.value += currentValue + ' -';
-   screen.value = '';
- });
- 
- dividir.addEventListener('click', function() {
-   const currentValue = screen.value;
-   historico.value += currentValue + ' /';
-   screen.value = '';
- });
- 
- vezes.addEventListener('click', function() {
-   const currentValue = screen.value;
-   historico.value += currentValue + ' *';
-   screen.value = '';
- });
+  
+   num1 = screen.value;
+   
+   historico.value += screen.value;
+   historico.value+=" +";
+resultado.value += num1;
+   alert(typeof(num1))
+   alert(typeof(historico))
+   alert(typeof(resultado))
+})
