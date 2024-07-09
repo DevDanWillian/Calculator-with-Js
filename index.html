@@ -31,21 +31,21 @@
 
    <div class="col-md-9 col-lg-8 col-xl-7 col-xxl-6 container border rounded-4 bg-dark bg-opacity-50">
 
-      <input id="hist" class="border border-warning rounded-4 border-5 mt-3 mb-1 text-bg-info p-1 m-5  m-auto text-end fs-6 d-flex bg-opacity-50" onkeydown="preventKeyboardInput(event)">
+      <input id="hist" class="border border-warning border-opacity-50 rounded-4 border-5 mt-3 mb-1 text-bg-info p-1 m-5  m-auto text-end fs-6 d-flex bg-opacity-50" onkeydown="preventKeyboardInput(event)" step=".01">
       
-      <input id="res" class="border border-warning rounded-4 border-5 text-bg-success p-1 m-auto text-end fs-3 d-flex bg-opacity-50" onkeydown="preventKeyboardInput(event)" value="0">
+      <input id="res" class="border border-warning rounded-4 border-5 border-opacity-75 text-bg-success p-1 m-auto text-end fs-3 d-flex bg-opacity-50" onkeydown="preventKeyboardInput(event)" value="0" step=".01" >
 
-      <input id="tela" class="border border-warning rounded-4 border-5 mt-3 mb-2 text-bg-success m-auto text-end fs-1 d-flex justify-content-around bg-opacity-100" type="number" onkeydown="preventKeyboardInput(event)">
+      <input id="tela" class="border border-warning rounded-4 border-5 border-opacity-75 mt-3 mb-2 text-bg-success m-auto text-end fs-1 d-flex justify-content-center bg-opacity-75" step=".01" onkeydown="preventKeyboardInput(event)">
 
 
 
       <div id="buttonsMath" class="">
          <div class="d-flex justify-content-center p-1" id="rowBtn1">
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnParentesis" data-action='parentesis'>( )</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnPorcentagem" data-action="porcentagem">%</div>
+
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnP" data-action="porcentagem">%</div>
             <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnC">CE</div>
             <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="apaga">C</div>
-            
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnDiv">/</div>
          </div>
          <div class="d-flex justify-content-center p-1" id="rowBtn2">
             <button class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">7</button>
@@ -65,11 +65,11 @@
             <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">3</div>
             <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnMais">+</div>
          </div>
-         <div class="d-flex justify-content-center p-1" id="rowBtn5">
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtn.">.</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25 calcBtnNum">0</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnIgual">=</div>
-            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnDiv">/</div>
+         <div class=" p-1 d-flex justify-content-around" id="rowBtn5">
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-25" id="calcBtnPonto">.</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 calcBtnNum w-25">0</div>
+            <div class="btn btn-sm btn-info p-4 fs-5 m-1 w-50" id="calcBtnIgual">=</div>
+            
             
          </div>
       </div>
