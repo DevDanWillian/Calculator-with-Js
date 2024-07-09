@@ -1,9 +1,12 @@
+
 const historico = document.getElementById('hist');
+let res = document.getElementById('res');
+let screen = document.getElementById("tela")
 
-let num1 = null;
-let num2 = null;
+let num1 = 0;
+let num2 = 0;
 
-const resultado = document.getElementById('res');
+
 
 const igual = document.getElementById("calcBtnIgual")
 const apaga = document.getElementById("apaga")
@@ -13,48 +16,80 @@ const menos = document.getElementById("calcBtnMenos")
 const dividir = document.getElementById("calcBtnDiv")
 const vezes = document.getElementById("calcBtnMult")
 
-let screen = document.getElementById("tela")
+
 
 const calcBtnNum = document.querySelectorAll(".calcBtnNum")
+calcBtnNum.forEach(function(btn) {
+   btn.addEventListener("click", function() {
+       const value = this.value || this.textContent;
+       
+
+       screen.value += value;
+   });
+});
 
 function preventKeyboardInput(event) {
   event.preventDefault();
 }
-//--
-calcBtnNum.forEach(function(btn) {
-   btn.addEventListener("click", function() {
-       // Get the value of the clicked button
-       const value = this.value || this.textContent;
-       
-       // Append the value to the input field
-       screen.value += value;
-   });
-});
-//--
 
 apaga.addEventListener("click", function() {
    screen.value = screen.value.substring(0, screen.value.length - 1);
 });
 
 c.addEventListener("click", function() {
-   screen.value=null;
-   historico.value=null;
-   resultado.value=null;
+   screen.value = "";
+   historico.value = "";
+   res.value = "";
+   num1 = "";
+   num2 = "";
+   operator = "";
 })
 
-// Adicione um ouvinte de evento de clique ao botão "igual"
 igual.addEventListener('click', function() {
 
 })
 
+
 mais.addEventListener("click", function() {
-  
-   num1 = screen.value;
-   
-   historico.value += screen.value;
-   historico.value+=" +";
-resultado.value += num1;
-   alert(typeof(num1))
-   alert(typeof(historico))
-   alert(typeof(resultado))
+   const num1 = parseFloat(res.value);
+   const num2 = parseFloat(screen.value);
+   const resultado = num1 + num2;
+
+   historico.value += screen.value + " + ";
+   res.value = resultado;
+   screen.value = "";
+   //alert(typeof resultado);
+})
+
+menos.addEventListener("click", function() {
+   const num1 = parseFloat(res.value);
+   const num2 = parseFloat(screen.value);
+   const resultado = num1 - num2;
+
+   historico.value += screen.value + " - ";
+   res.value = resultado;
+   screen.value = ""
+   //alert(typeof resultado);
+})
+
+vezes.addEventListener("click", function() {
+   const num1 = parseFloat(res.value);
+   const num2 = parseFloat(screen.value);
+   const resultado = num1 * num2;
+
+   historico.value += screen.value + " * ";
+   res.value = resultado;
+   screen.value = "";
+   //alert(typeof resultado);
+})
+
+dividir.addEventListener("click", function() {
+   const num1 = parseFloat(res.value);
+   const num2 = parseFloat(screen.value);
+   const resultado = num1 / num2;
+
+   historico.value += screen.value + " / ";
+   res.value = resultado;
+   screen.value = "";
+   //alert(typeof resultado);
 })
