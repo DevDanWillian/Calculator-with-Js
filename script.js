@@ -74,9 +74,15 @@ function handleOperationClick(operator) {
   const num1 = parseFloat(res.value); // Converter para número
   const num2 = parseFloat(screen.value); // Converter para número
   let resultado = 0;
-
+  const historicovaluetrim = historico.value.trim().slice(-1);
+    if (screen.value === "") {
+      screen.value = "";
+      return;
+    }
   switch (operator) {
     case "+":
+
+      // Adicionar o operador à tela do histórico
       historico.value += screen.value + " +";
       resultado = num1 + num2;
       break;
@@ -119,7 +125,7 @@ function handleOperationClick(operator) {
       break;
 
     case "=":
-      const historicovaluetrim = historico.value.trim().slice(-1);
+      
       historico.value += screen.value + " =";
       switch (historicovaluetrim) {
         case "+":
@@ -138,7 +144,14 @@ function handleOperationClick(operator) {
         case "%":
           resultado = (num1 * num2) / 100;
           break;
+        case "=":
+
+          resultado = num1;
+          break;
+        
         default:
+          //in case of NaN, resultado cant lose teir value
+          
           console.error("Operador não suportado:", historicovaluetrim);
           break;
       }
